@@ -1,0 +1,10 @@
+---
+title: 'Статьи'
+active: '/articles/'
+---
+
+h4 Книги
+ul
+    each p in articles
+        li
+            a(href=('/'+p.path.slice(0, -5)+'/'))= p.title

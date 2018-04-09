@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+.vimrc
+build
+node_modules
+package-lock.json
+.DS_Store
