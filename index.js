@@ -4,12 +4,12 @@ const jade           = require('metalsmith-jade');
 const layouts        = require('metalsmith-layouts');
 const permalinks     = require('metalsmith-permalinks');
 const collections    = require('metalsmith-collections');
-const uglify         = require('metalsmith-uglify');
 const less           = require('metalsmith-less');
 const ignore         = require('metalsmith-ignore');
 const cleanCss       = require('metalsmith-clean-css');
 const metalsmithInspectFiles = require('metalsmith-inspect-files');
 const partial = require('metalsmith-partial');
+const watch = require('metalsmith-watch');
 
 Metalsmith(__dirname)
     .source('./source')
@@ -24,6 +24,7 @@ Metalsmith(__dirname)
     })
     .destination('./build')
     .clean(true)
+    .use(metalsmithInspectFiles())
     .use(collections({
         articles: {
             pattern: [
@@ -50,8 +51,8 @@ Metalsmith(__dirname)
     }))
     .use(less())
     .use(cleanCss())
-    .use(uglify())
     .use(ignore([
+        '**/.DS_Store',
         '**/*.less'
     ]))
     .use(metalsmithInspectFiles())

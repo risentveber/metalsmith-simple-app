@@ -6,17 +6,14 @@ html
         meta(name='viewport' content='width=device-width, initial-scale=1.0')
         title=title
         link(href='/assets/stylesheets/main.css', rel='stylesheet')
-
+        link(rel="icon" href="/assets/images/favicon.png")
     body
         .container
-            nav
-                ul
-                    each page in menuLinks
-                        li.menu(class=(active == page.url ? 'active' : ''))
-                            a(href=page.url)=page.title
+            nav!=partial('menu.jade', {menuLinks, currentPath: path})
+
             section.page-content!=contents
 
-            footer!=partial('menu.jade')
+            footer!=partial('footer.jade')
 
     script(src='/assets/js/turbolinks.min.js')
-    script(src='/assets/js/main.min.js')
+    //- script(src='/assets/js/main.min.js')

@@ -1,1 +1,5 @@
-pre simpleStringify(this)
+ul.menu
+    each page in menuLinks
+        - isActive = ('/'+currentPath+'/').startsWith(page.url) && (page.url != '/' || page.url === currentPath + '/')
+        li(class=(isActive ? 'active' : ''))
+            a(href=page.url)=page.title
